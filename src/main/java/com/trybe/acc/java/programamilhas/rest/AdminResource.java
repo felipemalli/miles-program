@@ -5,7 +5,6 @@ import com.trybe.acc.java.programamilhas.result.SaldoResult;
 import com.trybe.acc.java.programamilhas.service.AdminService;
 import com.trybe.acc.java.programamilhas.util.TokenUtil;
 import java.util.List;
-import java.util.stream.Collectors;
 import javax.inject.Inject;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;

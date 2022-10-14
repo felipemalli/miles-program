@@ -27,7 +27,7 @@ public class TransacaoResource {
   private TokenUtil tokenUtil;
 
   /**
-   * Transfere da conta do token com id do usuário para a conta destino.
+   * Transfere da conta do token com id da pessoa usuária para a conta destino.
    */
   @POST
   @Path("/transferencia")
@@ -41,7 +41,7 @@ public class TransacaoResource {
   }
 
   /**
-   * Resgata um produto pelo token com id do usuário.
+   * Resgata um produto pelo token com id da pessoa usuária.
    */
   @POST
   @Path("/resgate-produto")

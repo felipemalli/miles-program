@@ -2,6 +2,7 @@ package com.trybe.acc.java.programamilhas.rest;
 
 import com.trybe.acc.java.programamilhas.dto.LoginDto;
 import com.trybe.acc.java.programamilhas.exception.AcessoNaoAutorizadoException;
+import com.trybe.acc.java.programamilhas.exception.ValidacaoException;
 import com.trybe.acc.java.programamilhas.result.MensagemResult;
 import com.trybe.acc.java.programamilhas.service.PessoaService;
 import java.security.NoSuchAlgorithmException;
@@ -26,7 +27,7 @@ public class PessoaResource {
   private PessoaService pessoaService;
 
   /**
-   * Cria uma pessoa usuária.
+   * Cria uma pessoa.
    */
   @POST
   public Response criar(LoginDto loginDto)
@@ -36,11 +37,11 @@ public class PessoaResource {
   }
 
   /**
-   * Deleta uma pessoa usuária pelo token com id.
+   * Deleta uma pessoa pelo token com id.
    */
   @DELETE
   public Response deletarPorId(@QueryParam("token") String token)
-          throws AcessoNaoAutorizadoException {
+          throws AcessoNaoAutorizadoException, ValidacaoException {
     MensagemResult mensagemResult = pessoaService.deletarPorId(token);
     return Response.status(Response.Status.OK).entity(mensagemResult).build();
   }

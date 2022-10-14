@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 
 @ApplicationScoped
 public class PessoaDao {
@@ -30,12 +31,35 @@ public class PessoaDao {
   }
 
   /**
+   * Salva uma pessoa.
+   */
+  @Transactional
+  public void criar(Pessoa pessoa) {
+    entityManager.persist(pessoa);
+  }
+
+  /**
    * Busca todas as pessoas.
    */
   public List<Pessoa> listarTodas() {
     String hql = "from " + Pessoa.class.getSimpleName();
     TypedQuery<Pessoa> query = entityManager.createQuery(hql, Pessoa.class);
     return query.getResultList();
+  }
+
+  /**
+   * Busca uma pessoa pelo id.
+   */
+  public Pessoa listaPorId(int id) {
+    return entityManager.find(Pessoa.class, id);
+  }
+
+  /**
+   * Deleta uma pessoa.
+   */
+  @Transactional
+  public void deletar(Pessoa pessoa) {
+    entityManager.remove(pessoa);
   }
 
 }

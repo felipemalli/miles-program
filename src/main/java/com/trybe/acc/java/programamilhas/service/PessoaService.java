@@ -2,6 +2,7 @@ package com.trybe.acc.java.programamilhas.service;
 
 import com.trybe.acc.java.programamilhas.dao.PessoaDao;
 import com.trybe.acc.java.programamilhas.exception.AcessoNaoAutorizadoException;
+import com.trybe.acc.java.programamilhas.exception.ValidacaoException;
 import com.trybe.acc.java.programamilhas.model.Pessoa;
 import com.trybe.acc.java.programamilhas.result.MensagemResult;
 import com.trybe.acc.java.programamilhas.util.HashUtil;
@@ -42,9 +43,15 @@ public class PessoaService {
    * Deleta uma pessoa usuária pelo token com id.
    */
   @Transactional
-  public MensagemResult deletarPorId(String token) throws AcessoNaoAutorizadoException {
+  public MensagemResult deletarPorId(String token)
+          throws AcessoNaoAutorizadoException, ValidacaoException {
     Integer id = this.tokenUtil.obterIdUsuario(token);
-    pessoaDao.deletarPorId(id);
+    Pessoa pessoa = pessoaDao.listaPorId(id);
+
+    if (pessoa == null) {
+      throw new ValidacaoException("Usuário não existe.");
+    }
+    pessoaDao.deletar(pessoa);
     return new MensagemResult("Usuário deletado.");
   }
 }
