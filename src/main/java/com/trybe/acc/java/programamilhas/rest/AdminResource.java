@@ -23,17 +23,17 @@ public class AdminResource {
   @Inject
   private TokenUtil tokenUtil;
 
+  /**
+   * Lista todos os saldos.
+   */
   @POST
   @Path("/saldos")
   @Produces(MediaType.APPLICATION_JSON)
   public Response listarSaldos(@QueryParam("token") String token)
       throws AcessoNaoAutorizadoException {
     tokenUtil.validarAdmToken(token);
-    List<Integer> saldos = adminService.listarSaldos();
-    List<SaldoResult> saldosResult = saldos.stream()
-          .map(SaldoResult::new)
-          .collect(Collectors.toList());
-    return Response.status(Response.Status.OK).entity(saldosResult).build();
+    List<SaldoResult> saldoResult = adminService.listarSaldos();
+    return Response.status(Response.Status.OK).entity(saldoResult).build();
   }
 
 }

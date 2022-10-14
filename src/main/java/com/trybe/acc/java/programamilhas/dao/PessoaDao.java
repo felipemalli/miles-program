@@ -6,6 +6,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 @ApplicationScoped
 public class PessoaDao {
@@ -27,4 +28,14 @@ public class PessoaDao {
     query.setParameter("hash", hash);
     return (Pessoa) query.getSingleResult();
   }
+
+  /**
+   * Busca todas as pessoas.
+   */
+  public List<Pessoa> listarTodas() {
+    String hql = "from " + Pessoa.class.getSimpleName();
+    TypedQuery<Pessoa> query = entityManager.createQuery(hql, Pessoa.class);
+    return query.getResultList();
+  }
+
 }
