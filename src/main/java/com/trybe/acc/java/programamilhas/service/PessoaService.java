@@ -31,10 +31,10 @@ public class PessoaService {
   public MensagemResult criar(String login, String senha)
           throws InvalidKeySpecException, NoSuchAlgorithmException {
     String hash = hashUtil.hash(senha);
-    Pessoa novaPessoa = new Pessoa();
-    novaPessoa.setLogin(login);
-    novaPessoa.setHash(hash);
-    this.pessoaDao.persist(novaPessoa);
+    Pessoa pessoa = new Pessoa();
+    pessoa.setLogin(login);
+    pessoa.setHash(hash);
+    pessoaDao.criar(pessoa);
     return new MensagemResult("Usuário criado.");
   }
 
@@ -42,9 +42,9 @@ public class PessoaService {
    * Deleta uma pessoa usuária pelo token com id.
    */
   @Transactional
-  public MensagemResult deletar(String token) throws AcessoNaoAutorizadoException {
+  public MensagemResult deletarPorId(String token) throws AcessoNaoAutorizadoException {
     Integer id = this.tokenUtil.obterIdUsuario(token);
-    this.pessoaDao.deleteById(id);
+    pessoaDao.deletarPorId(id);
     return new MensagemResult("Usuário deletado.");
   }
 }
