@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 @ApplicationScoped
-public class PessoaDao {
+public class PessoaDao implements PanacheRepositoryBase<Pessoa, Integer> {
 
   @Inject
   EntityManager entityManager;

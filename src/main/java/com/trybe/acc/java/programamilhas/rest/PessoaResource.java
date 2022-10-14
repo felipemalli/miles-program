@@ -26,18 +26,16 @@ public class PessoaResource {
    */
   @POST
   public Response criar(LoginDto loginDto) {
-    pessoaService.criar(loginDto.getLogin(), loginDto.getSenha());
-    MensagemResult mensagemResult = new MensagemResult("Usuário criado.");
+    MensagemResult mensagemResult = pessoaService.criar(loginDto.getLogin(), loginDto.getSenha());
     return Response.status(Response.Status.OK).entity(mensagemResult).build();
   }
 
   /**
-   * Deleta uma pessoa usuária.
+   * Deleta uma pessoa usuária pelo token com id.
    */
   @DELETE
-  public Response deletar(@QueryParam("token") String token) {
-    pessoaService.deletar(token);
-    MensagemResult mensagemResult = new MensagemResult("Usuário deletado.");
+  public Response deletarPorId(@QueryParam("token") String token) {
+    MensagemResult mensagemResult = pessoaService.deletarPorId(token);
     return Response.status(Response.Status.OK).entity(mensagemResult).build();
   }
 
