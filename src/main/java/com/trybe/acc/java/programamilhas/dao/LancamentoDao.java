@@ -1,14 +1,11 @@
 package com.trybe.acc.java.programamilhas.dao;
 
 import com.trybe.acc.java.programamilhas.model.Lancamento;
-
 import java.util.List;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import javax.transaction.Transactional;
 
 @ApplicationScoped
 public class LancamentoDao {

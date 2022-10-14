@@ -21,13 +21,9 @@ public class DominioResource {
   @Inject
   private DominioService dominioService;
 
-  @GET
-  @Path("/tipolancamento")
-  public Response listarTipoLancamentos() {
-    List<TipoLancamento> tipoLancamentos = dominioService.listarTipoLancamentos();
-    return Response.status(Response.Status.OK).entity(tipoLancamentos).build();
-  }
-
+  /**
+   * Lista parceiros.
+   */
   @GET
   @Path("/parceiro")
   public Response listarParceiros() {
@@ -35,11 +31,24 @@ public class DominioResource {
     return Response.status(Response.Status.OK).entity(parceiros).build();
   }
 
+  /**
+   * Lista produtos.
+   */
   @GET
   @Path("/produto")
   public Response listarProdutos() {
     List<Produto> produtos = dominioService.listarProdutos();
     return Response.status(Response.Status.OK).entity(produtos).build();
+  }
+
+  /**
+   * Lista tipo lançamentos.
+   */
+  @GET
+  @Path("/tipolancamento")
+  public Response listarTipoLancamentos() {
+    List<TipoLancamento> tipoLancamentos = dominioService.listarTipoLancamentos();
+    return Response.status(Response.Status.OK).entity(tipoLancamentos).build();
   }
 
 }
