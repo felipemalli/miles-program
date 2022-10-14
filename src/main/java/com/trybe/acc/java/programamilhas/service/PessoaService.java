@@ -26,7 +26,7 @@ public class PessoaService {
   private HashUtil hashUtil;
 
   /**
-   * Cria uma pessoa usuária.
+   * Cria uma pessoa.
    */
   @Transactional
   public MensagemResult criar(String login, String senha)
@@ -40,7 +40,7 @@ public class PessoaService {
   }
 
   /**
-   * Deleta uma pessoa usuária pelo token com id.
+   * Deleta uma pessoa pelo token com id.
    */
   @Transactional
   public MensagemResult deletarPorId(String token)
