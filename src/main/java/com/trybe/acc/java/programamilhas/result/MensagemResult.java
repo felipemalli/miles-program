@@ -11,4 +11,5 @@ public class MensagemResult {
   public String getMensagem() {
     return mensagem;
   }
+
 }

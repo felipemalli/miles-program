@@ -33,7 +33,7 @@ public class TokenUtil {
 
   /**
    * Obtem o id da pessoa usuária, dado um token.
-   * @param token o token a ser validado
+   * @param token o token a ser validado.
    * @return o id da pessoa.
    * @throws AcessoNaoAutorizadoException caso o token seja invalido.
    */

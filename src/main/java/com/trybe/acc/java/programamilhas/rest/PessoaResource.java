@@ -1,12 +1,8 @@
 package com.trybe.acc.java.programamilhas.rest;
 
 import com.trybe.acc.java.programamilhas.dto.LoginDto;
-import com.trybe.acc.java.programamilhas.exception.AcessoNaoAutorizadoException;
-import com.trybe.acc.java.programamilhas.exception.ValidacaoException;
 import com.trybe.acc.java.programamilhas.result.MensagemResult;
 import com.trybe.acc.java.programamilhas.service.PessoaService;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -29,10 +25,9 @@ public class PessoaResource {
    * Cria uma pessoa usuária.
    */
   @POST
-  public Response create(LoginDto loginDto) {
-    pessoaService.create(loginDto.getLogin(), loginDto.getSenha());
+  public Response criar(LoginDto loginDto) {
+    pessoaService.criar(loginDto.getLogin(), loginDto.getSenha());
     MensagemResult mensagemResult = new MensagemResult("Usuário criado.");
-
     return Response.status(Response.Status.OK).entity(mensagemResult).build();
   }
 
@@ -40,10 +35,10 @@ public class PessoaResource {
    * Deleta uma pessoa usuária.
    */
   @DELETE
-  public Response delete(@QueryParam("token") String token) {
-    pessoaService.delete(token);
+  public Response deletar(@QueryParam("token") String token) {
+    pessoaService.deletar(token);
     MensagemResult mensagemResult = new MensagemResult("Usuário deletado.");
-
     return Response.status(Response.Status.OK).entity(mensagemResult).build();
   }
+
 }
