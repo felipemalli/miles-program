@@ -34,19 +34,19 @@ OBS: The `openapi-programa-milhas.txt` file in the root of the project is the co
 
 1- Endpoint echo returns 'Hello' with status 200;
 
-2- Person creation endpoint must successfully insert a Person.
+2- Person creation endpoint must successfully insert a Person;
 
-3- Delete person endpoint works successfully.
+3- Delete person endpoint works successfully;
 
-4- Endpoint '/domain/tipolancamento' works successfully.
+4- Endpoint '/domain/tipolancamento' works successfully;
 
-5- Endpoint '/domain/partner' works successfully.
+5- Endpoint '/domain/partner' works successfully;
 
-6- Endpoint '/domain/product' works successfully.
+6- Endpoint '/domain/product' works successfully;
 
-7- Balance, transfer, redemption and extract operations work successfully.
+7- Balance, transfer, redemption and extract operations work successfully;
 
-8- Authentication works successfully for a user.
+8- Authentication works successfully for a user;
 
 9- Authentication fails when credentials do not match.
 
